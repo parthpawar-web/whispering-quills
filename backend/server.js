@@ -14,7 +14,22 @@ const app = express();
 connectDB();
 
 // Apply Global Middlewares
-app.use(cors());
+const allowedOrigins = [
+  'https://whispering-quills.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:3000'
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
