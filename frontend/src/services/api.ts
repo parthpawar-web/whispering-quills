@@ -1,6 +1,10 @@
 // src/services/api.ts
 
-const API_BASE_URL = 'http://localhost:5000/api';
+let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+if (!baseUrl.endsWith('/api')) {
+  baseUrl = `${baseUrl.replace(/\/$/, '')}/api`;
+}
+const API_BASE_URL = baseUrl;
 
 export const fetchApi = async (endpoint: string, options: RequestInit = {}) => {
   const token = localStorage.getItem('token');

@@ -1,7 +1,11 @@
 import axios from 'axios';
 
 // Get base API URL from environment variables, fallback to port 5000 in development
-const VITE_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+if (!baseUrl.endsWith('/api')) {
+  baseUrl = `${baseUrl.replace(/\/$/, '')}/api`;
+}
+const VITE_API_URL = baseUrl;
 
 const axiosInstance = axios.create({
   baseURL: VITE_API_URL,
