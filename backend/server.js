@@ -47,7 +47,7 @@ app.listen(PORT, () => {
   console.log(`\x1b[36m%s\x1b[0m`, `   ⭐  Whispering Quills Server Running...  ⭐`);
   console.log(`\x1b[33m%s\x1b[0m`, `   - Port: ${PORT}`);
   console.log(`\x1b[33m%s\x1b[0m`, `   - Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`\x1b[33m%s\x1b[0m`, `   - Database: MongoDB Default (27017)`);
+  console.log(`\x1b[33m%s\x1b[0m`, `   - Database: ${process.env.MONGO_URI && process.env.MONGO_URI.includes('mongodb+srv') ? 'MongoDB Atlas Cloud' : 'MongoDB Local (27017)'}`);
   console.log(`\x1b[35m%s\x1b[0m`, `  ✦ . ˚ ✦ . ˚ ✦ . ˚ ✦ . ˚ ✦ . ˚ ✦ . ˚ ✦ . ˚ ✦`);
   console.log(`\n`);
 });

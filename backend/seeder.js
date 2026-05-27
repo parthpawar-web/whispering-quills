@@ -264,7 +264,7 @@ const sampleStories = [
 const seedData = async () => {
   try {
     // Connect to Database
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/whispering_quills');
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://pawarparth915_db_user:DzE1SE4RQx9zSp0K@whispering.wjhzmxr.mongodb.net/whispering?retryWrites=true&w=majority&appName=whispering');
     console.log('[Seeder]: Connected to MongoDB.');
 
     // Clear existing collections
